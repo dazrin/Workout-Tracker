@@ -15,14 +15,16 @@ app.use(express.json());
 // Allow app to see contents of public directory
 app.use(express.static("public"));
 
-// Connect to our database
+// Connect to our database 
 mongoose.connect(
-  process.env.MONGODB_URI || 'mongodb://localhost/workoutDB', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useCreateIndex: true,
-  useFindAndModify: false
-});
+  process.env.MONGODB_URI || 'mongodb://localhost/workout-trackerDB',
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+    useFindAndModify: false
+  }
+);
 
 // Allow app to use routes
 app.use(require("./routes/api.js"));
