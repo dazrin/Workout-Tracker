@@ -24,7 +24,10 @@ This app allows users to enter and keep track of their daily workouts by enterin
 
 
 ## Screenshots
-
+![Homepage Screenshot](https://i.imgur.com/wfpjyQt.png)
+![Add Excercise Screenshot - Resistance](https://i.imgur.com/jt9kpnR.png)
+![Add Excercise Screenshot - Cardio](https://i.imgur.com/kfs0WFo.png)
+![Dashboard Screenshot](https://i.imgur.com/h0tiwQE.png)
 
 ## License
 MIT License
