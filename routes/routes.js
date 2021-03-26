@@ -1,24 +1,21 @@
-// Dependancies
-const router = require('express').Router();
+// Dependencies
+const router = require("express").Router();
 const Workout = require("../models/workout.js");
-
-// Requiring path to so we can use relative routes to our HTML files
 const path = require('path');
 
-// route to homepage
-router.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '../public/index.html'));
-});
+// exercise.html route
+router.get("/exercise", (req,res) =>{
+  res.sendFile(path.join(__dirname, "../public/exercise.html"))
+})
 
-// route to stats page
-router.get('/exercise', (req, res) => {
-  res.sendFile(path.join(__dirname, '../public/exercise.html'));
-});
+// stats.html route
+router.get("/stats", (req,res) =>{
+  res.sendFile(path.join(__dirname, "../public/stats.html"))
+})
 
-// route to exercise page
-router.get('/stats', (req, res) => {
-  res.sendFile(path.join(__dirname, '../public/stats.html'));
-});
+// index.html route
+router.get("/", (req,res) =>{
+  res.sendFile(path.join(__dirname, "../public/index.html"))
+})
 
-// Export router for server to use
 module.exports = router;

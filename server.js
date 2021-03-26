@@ -1,12 +1,15 @@
 // Dependancies
 const express = require("express");
+const logger = require("morgan");
 const mongoose = require("mongoose");
 
 // Specify port to use for heroku and locally
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080;
 
 // Create express instance for our app
 const app = express();
+
+app.use(logger("dev"));
 
 // Allow our app to read .json objects
 app.use(express.urlencoded({ extended: true }));

@@ -1,8 +1,9 @@
+// Dependencies
 const router = require("express").Router();
 const Workout = require("../models/workout.js");
 
-// Get all workouts; Add totalDuration field
-router.get("/api/workout/", (req, res) =>{
+// Get all workouts and add field of Total Duration
+router.get("/api/workouts/", (req,res) =>{
   Workout.aggregate(
       [{
         $addFields : {totalDuration : {$sum: "$exercises.duration"}}
@@ -16,19 +17,8 @@ router.get("/api/workout/", (req, res) =>{
     })
 })
 
-// Create workout
-router.post("/api/workout/", (req,res) =>{
-  Workout.create(req.body)
-    .then(data =>{
-      res.json(data);
-    })
-    .catch(err =>{
-      res.status(400).json(err)
-    })
-})
-
-// Add exercise to workout
-router.put("/api/workout/:id", (req, res) =>{
+// Update workout of id by pushing a new exercise object to the exercises array
+router.put("/api/workouts/:id", (req,res) =>{
   Workout.findByIdAndUpdate(req.params.id, {
     $push: {exercises : {...req.body}}
   })
@@ -40,23 +30,19 @@ router.put("/api/workout/:id", (req, res) =>{
     })
 })
 
-// Add many exercises in bulk for instances were the application went offline
-router.post("/api/workout/bulk", ({ body }, res) => {
-    Workout.findByIdAndUpdate(
-    body[0].id,
-    {
-     $push: { exercises: { $each: body }}
-    })
-    .then((data) => {
+// Adds a new workout with today's date as default and empty exercise array
+router.post("/api/workouts/", (req,res) =>{
+  Workout.create(req.body)
+    .then(data =>{
       res.json(data);
     })
-    .catch(err => {
-      res.status(400).json(err);
-    });
-});
+    .catch(err =>{
+      res.status(400).json(err)
+    })
+})
 
-// Get last 7 workouts
-router.get("/api/workout/range", (req,res) =>{
+// Get the 7 latest workouts
+router.get("/api/workouts/range", (req,res) =>{
   Workout.aggregate(
       [{
         $addFields : {totalDuration : {$sum: "$exercises.duration"}}

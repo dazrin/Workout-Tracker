@@ -1,24 +1,19 @@
 const API = {
   async getLastWorkout() {
-
-    // Declare res variable to store data fetch response
     let res;
-
-    // Fetch request to get workout data
     try {
-      res = await fetch("/api/workout");
+      res = await fetch("/api/workouts");
     } catch (err) {
-      console.log(err);
+      console.log(err)
     }
     const json = await res.json();
-    return json[json.length - 1];
-    },
 
-  // Fetch request to get add exercise
+    return json[json.length - 1];
+  },
   async addExercise(data) {
     const id = location.search.split("=")[1];
 
-    const res = await fetch("/api/workout/" + id, {
+    const res = await fetch("/api/workouts/" + id, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data)
@@ -28,11 +23,8 @@ const API = {
 
     return json;
   },
-
-
-  // Fetch request to create workout
   async createWorkout(data = {}) {
-    const res = await fetch("/api/workout", {
+    const res = await fetch("/api/workouts", {
       method: "POST",
       body: JSON.stringify(data),
       headers: { "Content-Type": "application/json" }
@@ -43,10 +35,8 @@ const API = {
     return json;
   },
 
-  // Fetch request to get last 7 workouts
-
   async getWorkoutsInRange() {
-    const res = await fetch(`/api/workout/range`);
+    const res = await fetch(`/api/workouts/range`);
     const json = await res.json();
 
     return json;
