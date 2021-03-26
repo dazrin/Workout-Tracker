@@ -1,10 +1,10 @@
-# Workout-Tracker-MongoDB
+# Workout-Tracker
 
 ## Description
 The Workout Tracker application allows users to enter and keep track of their daily workout routing. Provided with the front end code, the task at hand was to build the backend of the application using Node, Express, MongoDB, and Mongoose Schema. This application is deployed on Heroku using MongoAtlas as the online database.
 
-* Link to the app on Heroku: 
-* Link to the Github repository: 
+* Link to the app on Heroku:  https://glacial-sands-59578.herokuapp.com/
+* Link to the Github repository: https://github.com/dazrin/Workout-Tracker
 
 
 ## Table of Contents
